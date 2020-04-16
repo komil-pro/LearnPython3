@@ -4,3 +4,27 @@
 
 # Вложенные циклы.
 
+lst = [1,0,5,0,7,1,3,0,11,8] # некоторый набор, отвечающий нашим условиям
+n = len(lst)
+
+zero_first = 0
+zero_last = 0
+
+mysum = 0
+
+# находим индекс/позицию первого нуля
+for i in range(n):
+    if lst[i] == 0:
+        zero_first = i
+        # находим индекс/позицию последнего нуля
+        for j in range(n-1,-1,-1):
+            if lst[j] == 0:
+                zero_last = j
+                break
+        break
+# теперь проверяем полученные индексы первого и последнего нуля
+if zero_last > zero_first+1:
+    for i in range(zero_first+1,zero_last):
+        mysum += lst[i]
+
+print("Otvet: ",mysum)
